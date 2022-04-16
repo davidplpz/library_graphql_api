@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/root_password
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+      - ./docker/mongo_db:/data/db
+    ports:
+      - 27017:27017
+    secrets:
+      - root_password
+
+secrets:
+  root_password:
+    file: ./docker/secrets/root_password.txt
