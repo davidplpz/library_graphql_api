@@ -13,3 +13,14 @@ export const createAuthor = async (root, args) => {
     throw new UserInputError(error.message, { invalidArgs: args });
   }
 };
+
+export const findAllAuthors = async () => {
+  const authors = await Author.find({});
+  return authors;
+};
+
+export const findAuthor = async (root, args) => {
+  const authorId = args.id;
+  const author = await Author.findOne({ _id: authorId });
+  return author;
+};
