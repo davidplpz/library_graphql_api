@@ -9,6 +9,6 @@ const server = new ApolloServer({
 });
 
 server
-  .listen({ port: process.env.PORT || 4000)
+  .listen({ port: process.env.PORT || 4000 })
   .then(({ url }) => console.log(`Servidor preparado en ${url}`))
   .catch((error) => console.error(error));
