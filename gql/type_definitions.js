@@ -8,7 +8,7 @@ const typeDefinitions = gql`
   }
 
   type Book {
-    isbn: ID!
+    id: ID!
     title: String!
     sinopsis: String!
     release_date: String!
@@ -23,6 +23,10 @@ const typeDefinitions = gql`
     countBooks: Int!
     findAllBooks: [Book]
     findBook(isbn: ID!): Book
+  }
+
+  type Mutation {
+    createAuthor(name: String!): Author
   }
 `;
 

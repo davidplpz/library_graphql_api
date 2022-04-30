@@ -1,0 +1,15 @@
+import { UserInputError } from "apollo-server";
+import Author from "../models/author.js";
+
+export const countAuthors = async () =>
+  await Author.collection.countDocuments();
+
+export const createAuthor = async (root, args) => {
+  try {
+    const author = new Author({ ...args });
+    await author.save();
+    return author;
+  } catch (error) {
+    throw new UserInputError(error.message, { invalidArgs: args });
+  }
+};
