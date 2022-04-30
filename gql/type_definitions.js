@@ -22,11 +22,17 @@ const typeDefinitions = gql`
     findAuthor(id: ID!): Author
     countBooks: Int!
     findAllBooks: [Book]
-    findBook(isbn: ID!): Book
+    findBook(id: ID!): Book
   }
 
   type Mutation {
     createAuthor(name: String!): Author
+    createBook(
+      title: String!
+      sinopsis: String!
+      release_date: String
+      authorId: String!
+    ): Book
   }
 `;
 
