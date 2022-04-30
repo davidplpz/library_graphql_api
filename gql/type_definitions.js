@@ -5,6 +5,7 @@ const typeDefinitions = gql`
     id: ID!
     name: String!
     created_at: String!
+    image: String!
   }
 
   type Book {
@@ -26,7 +27,8 @@ const typeDefinitions = gql`
   }
 
   type Mutation {
-    createAuthor(name: String!): Author
+    createAuthor(name: String!): Author!
+    addPhotoToAuthor(id: String!, image: String!): Author!
     createBook(
       title: String!
       sinopsis: String!

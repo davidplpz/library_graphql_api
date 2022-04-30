@@ -24,3 +24,16 @@ export const findAuthor = async (root, args) => {
   const author = await Author.findOne({ _id: authorId });
   return author;
 };
+
+export const addPhotoToAuthor = async (root, args) => {
+  const authorId = args.id;
+  const image = args.image;
+  try {
+    const author = await Author.findById(authorId);
+    author.image = image;
+    author.save();
+    return author;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

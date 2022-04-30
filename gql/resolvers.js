@@ -3,6 +3,7 @@ import {
   countAuthors,
   findAllAuthors,
   findAuthor,
+  addPhotoToAuthor,
 } from "../repositories/author.js";
 import {
   countBooks,
@@ -22,6 +23,7 @@ const resolvers = {
   },
   Mutation: {
     createAuthor: async (root, args) => await createAuthor(root, args),
+    addPhotoToAuthor: async (root, args) => await addPhotoToAuthor(root, args),
     createBook: async (root, args) => await createBook(root, args),
   },
 };
