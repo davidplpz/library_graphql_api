@@ -11,6 +11,7 @@ import {
   findAllBooks,
   findBook,
 } from "../repositories/book.js";
+import { signIn, signUp } from "../repositories/user.js";
 
 const resolvers = {
   Query: {
@@ -25,6 +26,8 @@ const resolvers = {
     createAuthor: async (root, args) => await createAuthor(root, args),
     addPhotoToAuthor: async (root, args) => await addPhotoToAuthor(root, args),
     createBook: async (root, args) => await createBook(root, args),
+    signUp: async (root, args) => await signUp(root, args),
+    signIn: async (root, args) => await signIn(root, args),
   },
 };
 
