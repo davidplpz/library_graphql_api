@@ -1,10 +1,12 @@
 import { UserInputError } from "apollo-server";
 import Book from "../models/book.js";
 import Author from "../models/author.js";
+import authenticated from "../services/authentication.js";
 
 export const countBooks = async () => Book.collection.countDocuments();
 
-export const createBook = async (root, args) => {
+export const createBook = async (root, args, context) => {
+  authenticated(context);
   try {
     const title = args.title;
     const sinopsis = args.sinopsis;

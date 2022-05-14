@@ -1,10 +1,12 @@
 import { UserInputError } from "apollo-server";
 import Author from "../models/author.js";
+import authenticated from "../services/authentication.js";
 
 export const countAuthors = async () =>
   await Author.collection.countDocuments();
 
-export const createAuthor = async (root, args) => {
+export const createAuthor = async (root, args, context) => {
+  authenticated(context);
   try {
     const author = new Author({ ...args });
     await author.save();
@@ -25,7 +27,8 @@ export const findAuthor = async (root, args) => {
   return author;
 };
 
-export const addPhotoToAuthor = async (root, args) => {
+export const addPhotoToAuthor = async (root, args, context) => {
+  authenticated(context);
   const authorId = args.id;
   const image = args.image;
   try {

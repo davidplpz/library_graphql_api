@@ -24,9 +24,12 @@ const resolvers = {
     me: (root, args, context) => me(root, args, context),
   },
   Mutation: {
-    createAuthor: async (root, args) => await createAuthor(root, args),
-    addPhotoToAuthor: async (root, args) => await addPhotoToAuthor(root, args),
-    createBook: async (root, args) => await createBook(root, args),
+    createAuthor: async (root, args, context) =>
+      await createAuthor(root, args, context),
+    addPhotoToAuthor: async (root, args, context) =>
+      await addPhotoToAuthor(root, args, context),
+    createBook: async (root, args, context) =>
+      await createBook(root, args, context),
     signUp: async (root, args) => await signUp(root, args),
     signIn: async (root, args) => await signIn(root, args),
   },
