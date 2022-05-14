@@ -13,7 +13,7 @@ export const signUp = async (root, args) => {
     const username = args.username;
     const rawPassword = args.password;
     const password = bcryptjs.hashSync(rawPassword);
-    const user = new User(username, password);
+    const user = new User({ username, password });
     await user.save();
     return user;
   } catch (error) {
@@ -39,6 +39,6 @@ export const signIn = async (root, args) => {
   };
 };
 
-export const me = async (root, args, context) => {
+export const me = (root, args, context) => {
   return contex.currentUser;
 };

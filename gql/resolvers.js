@@ -11,7 +11,7 @@ import {
   findAllBooks,
   findBook,
 } from "../repositories/book.js";
-import { signIn, signUp } from "../repositories/user.js";
+import { me, signIn, signUp } from "../repositories/user.js";
 
 const resolvers = {
   Query: {
@@ -21,6 +21,7 @@ const resolvers = {
     countBooks: async () => await countBooks(),
     findAllBooks: async () => await findAllBooks(),
     findBook: async (root, args) => await findBook(root, args),
+    me: (root, args, context) => me(root, args, context),
   },
   Mutation: {
     createAuthor: async (root, args) => await createAuthor(root, args),
