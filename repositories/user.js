@@ -25,13 +25,13 @@ export const signIn = async (root, args) => {
   const username = args.username;
   const rawPassword = args.password;
   const user = await User.findOne({ username: username });
-  const password = bcryptjs.compareSync(rawPassword);
+  const password = bcryptjs.compareSync(rawPassword, user.password);
   if (!user || !password) {
     throw new UserInputError("Credenciales inválidas");
   }
   const token = {
     username: args.username,
-    id: people._id,
+    id: user._id,
   };
 
   return {
@@ -40,5 +40,5 @@ export const signIn = async (root, args) => {
 };
 
 export const me = (root, args, context) => {
-  return contex.currentUser;
+  return context.currentUser;
 };
