@@ -1,6 +1,16 @@
 import { gql } from "apollo-server";
 
 const typeDefinitions = gql`
+  type Token {
+    value: String!
+  }
+
+  type User {
+    id: ID!
+    username: String!
+    created_at: String!
+  }
+
   type Author {
     id: ID!
     name: String!
@@ -24,6 +34,8 @@ const typeDefinitions = gql`
     countBooks: Int!
     findAllBooks: [Book]
     findBook(id: ID!): Book
+    findAllUsers: [User]!
+    me: User
   }
 
   type Mutation {
@@ -35,6 +47,8 @@ const typeDefinitions = gql`
       release_date: String
       authorId: String!
     ): Book
+    signUp(username: String!, password: String!): User
+    signIn(username: String!, password: String!): Token
   }
 `;
 
